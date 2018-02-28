@@ -1,0 +1,342 @@
+@import 'variables';
+@import 'mixins';
+@import 'defaults';
+@import 'input';
+@import 'login';
+
+// preload [APP LOADING]
+.preload{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(120deg, rgb(161, 240, 255), rgb(255, 253, 208));
+  z-index: 3;
+  text-align: center;
+
+  & .preload_spinner {
+    position: absolute;
+    top: 50%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+
+    & span {
+      background: #da85af !important;
+    }
+
+  }
+
+}
+
+// HEADER
+.index_header{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+
+  & .header_logo {
+    float: left;
+    position: absolute;
+    left: 5%;
+    top: 16px;
+    cursor: pointer;
+
+    & > img{
+      position: absolute;
+      width: 35px;
+      top: -2px;
+      right: 87px;
+    }
+
+    & > hr{
+      border: 0;
+      position: absolute;
+      border-left: 1px solid #000;
+      height: 35px;
+      left: 42px;
+      top: -2px;
+    }
+
+    & > span{
+      font-size: 27px;
+      margin-left: 40px;
+      font-family: 'Satisfy', cursive;
+      font-weight: bold;
+      top: -3px;
+      position: relative;
+      left: 15px;
+    }
+
+  }
+
+  & .right{
+    float: right;
+    position: relative;
+    right: 70px;
+    top: 21px;
+
+    & a{
+      border: 1px solid $ee;
+      outline: none;
+      padding: 4px 16px;
+      border-radius: 3px;
+      font-size: 14px;
+      margin-right: 5px;
+      color: #3d464d;
+      background: $ff;
+
+      &:hover, &:focus, &.ml_active {
+        background: $second_border;
+      }
+
+    }
+
+  }
+
+}
+
+// BADHSAH [MAIN DIV]
+.badshah {
+  position: relative;
+  margin-top: 65px;
+}
+
+// ERROR PAGE
+.error_div{
+  width: 436px;
+  position: relative;
+  top: 65px;
+  left: 450px;
+
+  .error_info{
+    margin-bottom: 10px;
+    width: 100%;
+    & span{
+      font-size: 20px;
+    }
+  }
+
+  .error_bottom {
+    text-align: right;
+    margin-top: 3px;
+
+    & a{
+      display: inline-block;
+      padding: 4px 15px;
+      font-weight: 600;
+      font-size: 14px;
+
+      &:last-of-type{
+        margin-left: 5px;
+      }
+
+    }
+
+  }
+
+
+}
+
+// HOME PAGE
+.home_page {
+  position: relative;
+  width: 700px;
+  margin: 0 auto;
+
+  .home {
+    position: relative;
+    border: 1px solid #f1e6e6;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: #fbf1f1;
+
+    & .home_header {
+      background: $ff;
+      font-size: 16px;
+      font-weight: 600;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 10px;
+      border-bottom: 1px solid #f1e6e6;
+    }
+
+    & .home_main {
+      position: relative;
+
+      & .home_inps {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5px;
+        padding: 10px;
+
+        & .inps_div {
+          position: relative;
+          background: #fff;
+          padding: 10px;
+          width: 306px;
+          box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
+          border-radius: 3px;
+
+          &:first-of-type {
+            margin-left: -4px;
+          }
+
+          &:last-of-type {
+            margin-right: 2px;
+          }
+
+          & span {
+            position: relative;
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+          }
+
+          & input[type='text'] {
+            position: relative;
+            width: 94%;
+            padding: 6px;
+          }
+
+        }
+      }
+
+      & .cancel_search {
+        background: $ff;
+        font-weight: 600;
+        padding: 7px 12px;
+        width: 106px;
+        margin-left: 550px;
+        border-radius: 3px;
+        border: 1px solid #f1e6e6;
+        cursor: pointer;
+
+        & i {
+          margin-left: 3px;
+        }
+      }
+
+      & .home_riders {
+        position: relative;
+        margin-top: 10px;
+
+        & .riders_main {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-right: 15px;
+          margin-left: 10px;
+
+          & .riders {
+            position: relative;
+            width: 310px;
+            display: flex;
+            background: $ff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #f1e6e6;
+            cursor: pointer;
+            transition: all .01s ease-in-out;
+
+            &:hover {
+              transform: scale(1.005);
+            }
+
+            & img {
+              width: 50px;
+              height: 50px;
+              margin-top: 2px;
+            }
+
+            & .riders_content {
+              position: relative;
+              width: 82%;
+              margin-left: 8px;
+
+              & .bold {
+                font-size: 13px;
+              }
+
+              & .riders_top {
+                position: relative;
+
+                & .riders_away {
+                  color: $d_light;
+                  font-style: italic;
+                  font-size: 12px;
+                  margin-left: 7px;
+                }
+              }
+
+              & .riders_bottom {
+                position: relative;
+                font-size: 12px;
+
+                & .riders_others {
+                  & > span {
+                    &:last-of-type {
+                      position: relative;
+                      margin-left: 10px;
+                    }
+                  }
+                }
+              }
+
+              & .riders_rating {
+                position: absolute;
+                color: $d_light;
+                top: 0;
+                right: 0;
+
+                & i {
+                  margin-left: 2px;
+                }
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .home_btns {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+
+    & a {
+      display: inline-block;
+      padding: 6px 15px;
+      font-size: 14px;
+
+      &:last-of-type {
+        margin-left: 5px;
+        background: #535766;
+        border-color: #535766;
+      }
+
+      &.colored_disabled {
+        cursor: not-allowed !important;
+        pointer-events: none !important;
+        background: #797d8c  !important;
+      }
+
+    }
+  }
+
+}
+

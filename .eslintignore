@@ -1,0 +1,4 @@
+node_modules/
+public/js/dist/*
+browser-env.js
+models/users-data.js

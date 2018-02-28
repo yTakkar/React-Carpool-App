@@ -1,0 +1,120 @@
+.display_text {
+  text-align: center;
+	margin-bottom: 30px;
+
+	& > span{
+		font-size: 23px;
+		color: #0b867a;
+	}
+
+}
+
+.log_sign{
+  position: absolute;
+  right: 50px;
+  top: 30px;
+
+	& > a{
+		padding: 5px 18px;
+		border-radius: 4px;
+		font-size: 14px;
+	}
+
+}
+
+.cua{
+  width: 300px;
+  margin-left: 521px;
+  position: relative;
+
+  & form > input{
+    display: block;
+    margin-bottom: 10px;
+    width: 92%;
+    padding: 9px 10px;
+    font-size: 14px;
+  }
+
+  & input[type='submit']{
+      width: 99.5%;
+  }
+
+  & .forgot_psswrd{
+    text-align: left;
+    margin-top: 10px;
+
+    & > a{
+      font-size: 13px;
+      position: relative;
+      top: -2px;
+    }
+
+  }
+
+}
+
+// REGISTER PAGE
+.register {
+  & .small_input {
+    position: relative;
+    width: 123px;
+    display: inline-block;
+  }
+
+  & .s_firstname {
+    margin-right: 5px;
+  }
+
+  & .terms_div {
+    position: relative;
+    margin-bottom: 14px;
+
+    & input[type='checkbox']{
+      position: relative;
+      top: 3px;
+    }
+
+  }
+
+  & .s_p_l {
+    bottom: 81px;
+    right: 17px;
+  }
+
+  & .username_checker {
+    position: absolute;
+    right: -188px;
+    top: 96px;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid $ee;
+    background: $fb;
+    display: none;
+    width: 160px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: wheat;
+      transform: rotate(45deg);
+      left: -5px;
+      top: 12px;
+      background: $fb;
+      border-left: 1px solid $ee;
+      border-bottom: 1px solid $ee;
+    }
+
+    & > .checker_icon {
+      position: absolute;
+      margin-left: 4px;
+
+      & > i {
+        font-size: 18px;
+      }
+    }
+
+  }
+
+}
