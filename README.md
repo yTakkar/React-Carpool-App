@@ -35,11 +35,6 @@ A simple Carpool App developed with React & Redux!!
     npm start [OR] yarn start
     ```
 
-5. For front-end layer of this app to get access to `env` variables defined in `.env`, run
-    ```bash
-    yarn env
-    ```
-
 4. Now run the app
     ```javacript
     localhost:[PORT]
