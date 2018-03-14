@@ -7,7 +7,7 @@
     "start": "nodemon app.js",
     "dev": "webpack --watch -d",
     "prod": "webpack --watch -p",
-    "env": "handy-browser-env"
+    "env": "handy-client-env"
   },
   "repository": {
     "type": "git",
