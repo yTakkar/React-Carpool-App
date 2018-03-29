@@ -7,15 +7,10 @@ import { connect } from 'react-redux'
     loggedIn: store.User.loggedIn
   }
 })
-
 export default class ShouldBeLoggedIn extends React.Component {
   render() {
     let { loggedIn } = this.props
 
-    return (
-      <div>
-        { !loggedIn ? <Redirect to='/login' /> : null }
-      </div>
-    )
+    return <div>{!loggedIn ? <Redirect to="/login" /> : null}</div>
   }
 }

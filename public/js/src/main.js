@@ -9,8 +9,8 @@ import store from '../src/store/store'
 let element = document.getElementById('react-app')
 if (element) {
   ReactDOM.render(
-    <Provider store={store} >
-      <App/>
+    <Provider store={store}>
+      <App />
     </Provider>,
     element
   )

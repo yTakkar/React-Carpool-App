@@ -7,10 +7,10 @@ const user_def = {
   riders: []
 }
 
-export default (state=user_def, action) => {
+export default (state = user_def, action) => {
   let py = action.payload
 
-  switch(action.type) {
+  switch (action.type) {
     case 'TOGGLE_LOGGEDIN':
       return { ...state, loggedIn: py }
       break
@@ -44,9 +44,10 @@ export default (state=user_def, action) => {
 }
 
 const filterRiders = (riders, { startFrom, destination }) =>
-  riders.filter(r =>
-    r.startFrom.toLowerCase().includes(startFrom.toLowerCase())
-    && r.destination.toLowerCase().includes(destination.toLowerCase())
+  riders.filter(
+    r =>
+      r.startFrom.toLowerCase().includes(startFrom.toLowerCase()) &&
+      r.destination.toLowerCase().includes(destination.toLowerCase())
   )
 
 const confirmRide = (riders, rider) => {

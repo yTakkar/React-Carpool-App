@@ -14,27 +14,22 @@ import { commonLogin } from '../../utils/utils'
     store
   }
 })
-
 export default class Login extends React.Component {
-
   state = {
     username: '',
     password: ''
   }
 
-  changeValue = (what, e) =>
-    this.setState({ [what]: e.target.value })
+  changeValue = (what, e) => this.setState({ [what]: e.target.value })
 
   login = e => {
     e.preventDefault()
-    let
-      { username, password } = this.state,
+    let { username, password } = this.state,
       { dispatch } = this.props
 
     if (!username || !password) {
       Notify({ value: 'Some values are missing!!' })
     } else {
-
       let loginOpt = {
         data: { username, password },
         btn: $('.l_submit'),
@@ -43,7 +38,6 @@ export default class Login extends React.Component {
         done: () => dispatch(toggleLoggedIn(true))
       }
       commonLogin(loginOpt)
-
     }
   }
 
@@ -52,55 +46,60 @@ export default class Login extends React.Component {
 
     return (
       <div>
+        <ShouldBeLoggedOut />
 
-        <ShouldBeLoggedOut/>
+        <Title value="Login To Continue" />
 
-        <Title value='Login To Continue' />
-
-        <FadeIn duration='300ms'>
-          <div className='log_sign'>
-            <Link to='/signup' className='pri_btn'>Need an account?</Link>
+        <FadeIn duration="300ms">
+          <div className="log_sign">
+            <Link to="/signup" className="pri_btn">
+              Need an account?
+            </Link>
           </div>
 
-          <div className='register cua' style={{ top: 125 }} >
-            <div className='display_text'>
+          <div className="register cua" style={{ top: 125 }}>
+            <div className="display_text">
               <span>Get started again</span>
             </div>
-            <form className='form_login' onSubmit={this.login} >
+            <form className="form_login" onSubmit={this.login}>
               <input
-                type='text'
-                className='l_username'
+                type="text"
+                className="l_username"
                 autoFocus
                 required
                 spellCheck={false}
-                autoComplete='false'
-                placeholder='Mobile number or email'
+                autoComplete="false"
+                placeholder="Mobile number or email"
                 value={username}
                 onChange={e => this.changeValue('username', e)}
               />
               <input
-                type='password'
-                className='l_password'
-                id='l_password'
+                type="password"
+                className="l_password"
+                id="l_password"
                 required
-                placeholder='Password'
+                placeholder="Password"
                 value={password}
                 onChange={e => this.changeValue('password', e)}
               />
-              <input type='submit' value='Login To Continue' className='l_submit' />
+              <input
+                type="submit"
+                value="Login To Continue"
+                className="l_submit"
+              />
             </form>
 
-            <div className='forgot_psswrd'>
+            <div className="forgot_psswrd">
               <Link
-                to='/forgot-password'
-                className='a_pri'
-                alt='Forgot your password'
-              >Forgot your password?</Link>
+                to="/forgot-password"
+                className="a_pri"
+                alt="Forgot your password"
+              >
+                Forgot your password?
+              </Link>
             </div>
-
           </div>
         </FadeIn>
-
       </div>
     )
   }

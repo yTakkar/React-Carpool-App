@@ -3,7 +3,12 @@ import { FadeIn } from 'animate-components'
 import Title from '../others/title'
 import ShouldBeLoggedIn from '../user/loggedIn'
 import { connect } from 'react-redux'
-import { getUserDetails, getRiders, filterRidersByRoute, confirmRide } from '../../store/actions/user-a'
+import {
+  getUserDetails,
+  getRiders,
+  filterRidersByRoute,
+  confirmRide
+} from '../../store/actions/user-a'
 import Riders from './riders'
 import { Scrollbars } from 'react-custom-scrollbars'
 import $ from 'jquery'
@@ -14,9 +19,7 @@ import Notify from 'handy-notification'
     riders: store.User.riders
   }
 })
-
 export default class Home extends React.Component {
-
   state = {
     startFrom: '',
     destination: '',
@@ -37,8 +40,7 @@ export default class Home extends React.Component {
 
   filter = e => {
     e.preventDefault()
-    let
-      { dispatch } = this.props,
+    let { dispatch } = this.props,
       { startFrom, destination } = this.state
     dispatch(filterRidersByRoute({ startFrom, destination }))
     this.setState({ showClearSearch: true })
@@ -56,12 +58,14 @@ export default class Home extends React.Component {
   selectRide = async (mobile, name) => {
     $('.riders')
       .removeClass('select_receiver_toggle')
-      .find('img').attr('src', '/images/face.jpg')
+      .find('img')
+      .attr('src', '/images/face.jpg')
 
     let element = $(`.rider_${mobile}`)
     element
       .addClass('select_receiver_toggle')
-      .find('img').attr('src', '/images/tick-3.png')
+      .find('img')
+      .attr('src', '/images/tick-3.png')
 
     await this.setState({
       selectRider: true,
@@ -72,8 +76,7 @@ export default class Home extends React.Component {
 
   confirmRide = e => {
     e.preventDefault()
-    let
-      { dispatch } = this.props,
+    let { dispatch } = this.props,
       { selectedRider } = this.state
     dispatch(confirmRide(selectedRider))
     Notify({ value: `Happy carpooling with ${selectedRider}` })
@@ -81,99 +84,91 @@ export default class Home extends React.Component {
   }
 
   render() {
-    let
-      { startFrom, destination, showClearSearch, selectRider } = this.state,
+    let { startFrom, destination, showClearSearch, selectRider } = this.state,
       { riders } = this.props,
-      map_riders = riders.map(r =>
+      map_riders = riders.map(r => (
         <Riders
           key={r.name}
           {...r}
           select={() => this.selectRide(r.mobile, r.name)}
         />
-      )
+      ))
 
     return (
       <div>
+        <ShouldBeLoggedIn />
 
-        <ShouldBeLoggedIn/>
+        <Title value="Home" />
 
-        <Title value='Home' />
-
-        <FadeIn duration='300ms' className='home_page' >
-
-          <div className='home'>
-
-            <div className='home_header'>
+        <FadeIn duration="300ms" className="home_page">
+          <div className="home">
+            <div className="home_header">
               <span>PICK A RIDE</span>
             </div>
 
-            <div className='home_main'>
-
-              <div className='home_inps'>
-                <div className='inps_div'>
+            <div className="home_main">
+              <div className="home_inps">
+                <div className="inps_div">
                   <span>START FROM</span>
                   <input
-                    type='text'
-                    spellCheck='false'
-                    placeholder='Eg. Bandra'
+                    type="text"
+                    spellCheck="false"
+                    placeholder="Eg. Bandra"
                     autoFocus
                     value={startFrom}
                     onChange={e => this.changeValue('startFrom', e)}
                   />
                 </div>
 
-                <div className='inps_div'>
+                <div className="inps_div">
                   <span>DESTINATION</span>
                   <input
-                    type='text'
-                    spellCheck='false'
-                    placeholder='Eg. Andheri'
+                    type="text"
+                    spellCheck="false"
+                    placeholder="Eg. Andheri"
                     value={destination}
                     onChange={e => this.changeValue('destination', e)}
                   />
                 </div>
               </div>
 
-              {
-                showClearSearch ?
-                  <div className='cancel_search' onClick={this.clearSearch} >
-                    Cancel search <i className='fas fa-times-circle' ></i>
-                  </div>
-                  : null
-              }
+              {showClearSearch ? (
+                <div className="cancel_search" onClick={this.clearSearch}>
+                  Cancel search <i className="fas fa-times-circle" />
+                </div>
+              ) : null}
 
               <Scrollbars
                 style={{ height: showClearSearch ? 340 : 365 }}
-                className='home_riders'
+                className="home_riders"
               >
-                <div className='riders_main'>
-                  { map_riders }
-                </div>
+                <div className="riders_main">{map_riders}</div>
               </Scrollbars>
-
             </div>
-
           </div>
 
-          <div className='home_btns'>
-            {
-              startFrom || destination ?
-                <a
-                  href='#'
-                  className='pri_btn riders_search'
-                  onClick={this.filter}
-                >Search</a>
-                : null
-            }
+          <div className="home_btns">
+            {startFrom || destination ? (
+              <a
+                href="#"
+                className="pri_btn riders_search"
+                onClick={this.filter}
+              >
+                Search
+              </a>
+            ) : null}
 
             <a
-              href='#'
-              className={`pri_btn select_rider ${!selectRider ? 'colored_disabled' : ''}`}
+              href="#"
+              className={`pri_btn select_rider ${
+                !selectRider ? 'colored_disabled' : ''
+              }`}
               onClick={this.confirmRide}
-            >Confirm ride</a>
+            >
+              Confirm ride
+            </a>
           </div>
         </FadeIn>
-
       </div>
     )
   }

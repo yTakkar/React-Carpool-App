@@ -9,9 +9,7 @@ import Notify from 'handy-notification'
     loggedIn: store.User.loggedIn
   }
 })
-
 export default class Header extends React.Component {
-
   logout = async e => {
     e.preventDefault()
     let { dispatch } = this.props
@@ -24,17 +22,25 @@ export default class Header extends React.Component {
 
     return (
       <div>
-        <div className='index_header'>
-          <div className='header_logo nh_logo'>
-            <img src='/images/carpool.png' alt='Carpool' />
+        <div className="index_header">
+          <div className="header_logo nh_logo">
+            <img src="/images/carpool.png" alt="Carpool" />
             <hr />
             <span>Carpool</span>
           </div>
-          <div className='right'>
-            { loggedIn ? <NavLink exact to='/' >Home</NavLink> : null }
-            <NavLink to='/login' >Login</NavLink>
-            <NavLink to='/signup' >Signup</NavLink>
-            { loggedIn ? <a href='#' onClick={this.logout} >Logout</a> : null }
+          <div className="right">
+            {loggedIn ? (
+              <NavLink exact to="/">
+                Home
+              </NavLink>
+            ) : null}
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Signup</NavLink>
+            {loggedIn ? (
+              <a href="#" onClick={this.logout}>
+                Logout
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

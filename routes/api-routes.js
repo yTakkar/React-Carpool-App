@@ -1,5 +1,4 @@
-const
-  app = require('express').Router(),
+const app = require('express').Router(),
   { whatExists, addUser, getByName } = require('../models/user-model'),
   bcrypt = require('bcrypt'),
   users = require('../models/users-data'),
@@ -12,9 +11,7 @@ app.post('/is-loggedin', async (req, res) => {
 })
 
 // RETURNS SESSION DETAILS
-app.post('/get-user-details', (req, res) =>
-  res.json(req.session.sessionUser)
-)
+app.post('/get-user-details', (req, res) => res.json(req.session.sessionUser))
 
 // USER SIGNUP
 app.post('/signup', async (req, res) => {
@@ -33,7 +30,9 @@ app.post('/signup', async (req, res) => {
 
   req.checkBody('mobile', 'Mobile number should not be empty!!').notEmpty()
   req.checkBody('mobile', 'Invalid mobile number').isNumeric()
-  req.checkBody('mobile', 'Mobile number should be of 10-digit').isLength({ min: 10, max: 10 })
+  req
+    .checkBody('mobile', 'Mobile number should be of 10-digit')
+    .isLength({ min: 10, max: 10 })
 
   req.checkBody('carModel', 'Car model is empty!!').notEmpty()
 
@@ -43,9 +42,7 @@ app.post('/signup', async (req, res) => {
     errors.array().forEach(e => array.push(e.msg))
     res.json({ mssg: array })
   } else {
-
-    let
-      nameExists = whatExists('name', name),
+    let nameExists = whatExists('name', name),
       emailExists = whatExists('email', email),
       mobileExists = whatExists('mobile', mobile),
       salt = bcrypt.genSaltSync(10),
@@ -58,7 +55,6 @@ app.post('/signup', async (req, res) => {
     } else if (mobileExists) {
       res.json({ mssg: 'Mobile number already exists!!' })
     } else {
-
       let newUser = {
         name,
         email,
@@ -71,7 +67,7 @@ app.post('/signup', async (req, res) => {
         ...newUser,
         password: hash,
         rating: 0,
-        startFrom: '' ,
+        startFrom: '',
         destination: '',
         availableSeats: 0,
         away: 0
@@ -81,19 +77,13 @@ app.post('/signup', async (req, res) => {
         mssg: `Hello, ${name}`,
         success: true
       })
-
     }
-
   }
-
 })
 
 // USER LOGIN
 app.post('/login', async (req, res) => {
-  let {
-    body: { username, password },
-    session
-  } = req
+  let { body: { username, password }, session } = req
 
   req.checkBody('username', 'Username is empty!!').notEmpty()
   req.checkBody('password', 'Password field is empty!!').notEmpty()
@@ -104,15 +94,13 @@ app.post('/login', async (req, res) => {
     errors.array().forEach(e => array.push(e.msg))
     res.json({ mssg: array })
   } else {
-
-    let
-      mobileExists = whatExists('mobile', username),
+    let mobileExists = whatExists('mobile', username),
       emailExists = whatExists('email', username)
 
     if (mobileExists || emailExists) {
-
-      let
-        { name, email, mobile, carModel } = mobileExists ? mobileExists : emailExists,
+      let { name, email, mobile, carModel } = mobileExists
+          ? mobileExists
+          : emailExists,
         passwordHash = getByName('password', name),
         samePassword = bcrypt.compareSync(password, passwordHash),
         newUser = {
@@ -131,13 +119,10 @@ app.post('/login', async (req, res) => {
           success: true
         })
       }
-
     } else {
       res.json({ mssg: 'Invalid user!!' })
     }
-
   }
-
 })
 
 // USER LOGOUT
@@ -148,9 +133,8 @@ app.post('/logout', async (req, res) => {
 
 // RETURNS ALL USERS
 app.post('/get-riders', async (req, res) => {
-  let
-    returnedUsers = users.filter(u =>
-      u.startFrom != '' && u.destination != ''
+  let returnedUsers = users.filter(
+      u => u.startFrom != '' && u.destination != ''
     ),
     sorted = lodash.orderBy(returnedUsers, ['away'], ['asc']),
     remPassword = sorted.map(u => {

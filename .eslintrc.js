@@ -5,7 +5,11 @@ module.exports = {
     'es6': true,
     'node': true
   },
-  'extends': 'eslint:recommended',
+  'extends': [
+    'eslint:recommended',
+    'prettier',
+    'prettier/react'
+  ],
   'parser': 'babel-eslint',
   'parserOptions': {
     'ecmaVersion': 2017,
@@ -15,13 +19,10 @@ module.exports = {
     },
     'sourceType': 'module'
   },
-  'plugins': ['react'],
+  'plugins': ['react', 'prettier'],
   'rules': {
     'indent': [
       'error', 2
-    ],
-    'quotes': [
-      'error', 'single'
     ],
     'semi': [
       'error', 'never'
@@ -30,6 +31,13 @@ module.exports = {
     'no-ternary': 0,
     'no-nested-ternary': 0,
     'multiline-ternary': 0,
-    'react/jsx-uses-vars': 1
+    'react/jsx-uses-vars': 1,
+    'prettier/prettier': [
+      'error',
+      {
+        'singleQuote': true,
+        'semi': false,
+      }
+    ]
   }
 }

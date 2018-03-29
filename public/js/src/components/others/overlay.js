@@ -20,8 +20,8 @@ const Overlay = ({ type, close_on_click, close, opacity }) => {
         cursor: close_on_click ? 'zoom-out' : 'inherit',
         opacity
       }}
-      onClick={ close_on_click ? close : null }
-    ></div>
+      onClick={close_on_click ? close : null}
+    />
   )
 }
 
