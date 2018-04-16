@@ -3,6 +3,7 @@
 
 const user_def = {
   loggedIn: false,
+  isLoggedInLoading: false,
   sessionUser: {},
   riders: []
 }
@@ -15,8 +16,8 @@ export default (state = user_def, action) => {
       return { ...state, loggedIn: py }
       break
 
-    case 'IS_LOGGEDIN':
-      return { ...state, loggedIn: py }
+    case 'ISLOGGEDIN_LOADING':
+      return { ...state, isLoggedInLoading: py }
       break
 
     case 'GET_USER_DETAILS':

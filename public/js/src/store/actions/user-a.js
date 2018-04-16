@@ -7,10 +7,20 @@ export const toggleLoggedIn = what => {
   }
 }
 
+export const isLoggedInLoading = bool => {
+  return {
+    type: 'ISLOGGEDIN_LOADING',
+    payload: bool
+  }
+}
+
 export const isLoggedIn = () => {
   return dispatch => {
     post('/api/is-loggedIn')
-      .then(p => dispatch({ type: 'IS_LOGGEDIN', payload: p.data }))
+      .then(p => {
+        dispatch({ type: 'TOGGLE_LOGGEDIN', payload: p.data })
+        dispatch({ type: 'ISLOGGEDIN_LOADING', payload: false })
+      })
       .catch(e => console.log(e))
   }
 }
