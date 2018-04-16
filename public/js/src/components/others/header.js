@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../store/actions/user-a'
@@ -29,13 +29,12 @@ export default class Header extends React.Component {
             <span>Carpool</span>
           </div>
           <div className="right">
-            {loggedIn ? (
-              <NavLink exact to="/">
-                Home
-              </NavLink>
+            {!loggedIn ? (
+              <Fragment>
+                <NavLink to="/signup">Signup</NavLink>
+                <NavLink to="/login">Login</NavLink>
+              </Fragment>
             ) : null}
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/signup">Signup</NavLink>
             {loggedIn ? (
               <a href="#" onClick={this.logout}>
                 Logout
