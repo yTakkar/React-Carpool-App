@@ -2,6 +2,8 @@
 
 A simple Carpool App developed with React & Redux!!
 
+**No longer maintained.**
+
 # Quick Links
 1. [Screenshots](#screenshots)
 2. [Usage](#usage)
