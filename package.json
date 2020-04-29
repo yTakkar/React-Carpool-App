@@ -35,7 +35,7 @@
     "handy-log": "^1.0.3",
     "handy-notification": "^1.0.26",
     "handy-timeago": "^1.0.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.4",
     "morgan": "^1.9.0",
     "prop-types": "^15.6.0",
